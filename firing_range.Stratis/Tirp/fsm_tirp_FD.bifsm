@@ -1,0 +1,576 @@
+version=1;
+class GraphItems
+{
+	class Item0
+	{
+		Flags=250;
+		BasicText="";
+		Left=-40.348846;
+		Top=-149.41861;
+		Right=49.651154;
+		Bottom=-99.41861;
+		BgColor=255;
+		class ItemInfo
+		{
+			Text="start" \n "";
+			lStyle=-842150451;
+			Shape=6;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=700;
+			FontUnderline=1;
+			FontCharSet=0;
+			ItemType=0;
+			class ItemInfo
+			{
+				Id=1;
+				InitCode="_Tajin_aimedAt = {" \n "	private [""_actor"",""_target"",""_wpn"",""_pos0"",""_pos1"",""_wdir"",""_dst"",""_pos2"",""_deviation"",""_aiming""];" \n "" \n "_actor = _this select 0;" \n "_target = _this select 1;" \n "" \n "" \n "if (weaponLowered _actor || isNull _actor || isNull _target) exitWith {};" \n "" \n "_wpn = currentWeapon _actor;" \n "_pos0 = getPosASL _actor;" \n "_pos1 = getPosASL _target;" \n "_wdir = _actor weaponDirection _wpn;" \n "_dst = _pos0 distance _pos1;" \n "_pos2 = [(_pos0 select 0) + _dst * (_wdir select 0), (_pos0 select 1) + _dst * (_wdir select 1), (_pos0 select 2) + _dst * (_wdir select 2)];" \n "_deviation = _pos2 distance _pos1;" \n "" \n "(_deviation < 2)" \n "" \n "	" \n "};";
+				PreCondition="sleep 1;";
+			};
+		};
+	};
+	class Item1
+	{
+		Flags=218;
+		BasicText="";
+		Left=-39.555206;
+		Top=-278.65207;
+		Right=50.444794;
+		Bottom=-228.65207;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="is in drill" \n "";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=11;
+				Condition="(typeName _this getVariable ""tirp_FD_Mission"") == ""CODE"")";
+			};
+		};
+	};
+	class Item2
+	{
+		Flags=250;
+		BasicText="";
+		Left=167.35953;
+		Top=-274.11444;
+		Right=257.35956;
+		Bottom=-224.11444;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="in drill";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=12;
+			};
+		};
+	};
+	class Item3
+	{
+		Flags=218;
+		BasicText="";
+		Left=202.93573;
+		Top=-360.82727;
+		Right=292.93573;
+		Bottom=-310.82727;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="has targets";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=13;
+				Condition="count ([""currentTargets"",nil] call _this getVariable ""Tirp_FD_Mission"") > 0";
+			};
+		};
+	};
+	class Item4
+	{
+		Flags=250;
+		BasicText="";
+		Left=198.63565;
+		Top=-475.47623;
+		Right=288.63568;
+		Bottom=-425.47626;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="target";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=14;
+				PreCondition="_currentTargets = [""currentTargets"",nil] call _this getVariable ""Tirp_FD_Mission"";" \n "_thisTgt = _currentTargets  select 0;" \n "_this commandTarget _thisTgt;";
+				StateTab=1;
+			};
+		};
+	};
+	class Item5
+	{
+		Flags=218;
+		BasicText="";
+		Left=79.787445;
+		Top=-541.46326;
+		Right=169.78745;
+		Bottom=-491.46329;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="is aimed";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=15;
+				Condition="[_this, _thisTgt] call _Tajin_aimedAt ;";
+				ConditionTab=1;
+			};
+		};
+	};
+	class Item6
+	{
+		Flags=250;
+		BasicText="";
+		Left=-25.099365;
+		Top=-457.13464;
+		Right=64.900665;
+		Bottom=-407.13461;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Fire";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=16;
+				InitCode="if !(isPlayer _this) then {_this fire currentWeapon _this;};";
+			};
+		};
+	};
+	class Item7
+	{
+		Flags=218;
+		BasicText="";
+		Left=312.74481;
+		Top=-282.54791;
+		Right=402.74481;
+		Bottom=-232.54791;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="missionEnd";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=18;
+				Priority=1;
+				Condition="([""getMissionState"",nil] call _this getVariable ""Tirp_FD_Mission"") == ""end"";";
+			};
+		};
+	};
+	class Item8
+	{
+		Flags=250;
+		BasicText="";
+		Left=304.0546;
+		Top=-168.12643;
+		Right=394.05463;
+		Bottom=-118.12643;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="missionEND";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=19;
+				InitCode="//display scoreCard";
+			};
+		};
+	};
+	class Item9
+	{
+		Flags=218;
+		BasicText="";
+		Left=134.60431;
+		Top=-151.69122;
+		Right=224.60431;
+		Bottom=-101.69122;
+		BgColor=8421440;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=8;
+			class ItemInfo
+			{
+				Id=20;
+			};
+		};
+	};
+	class Item10
+	{
+		Flags=218;
+		BasicText="";
+		Left=-26.371353;
+		Top=-348.12704;
+		Right=63.628647;
+		Bottom=-298.12708;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="target changed";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=21;
+				Priority=1;
+				Condition="(([""currentTargets"",nil] call _this getVariable ""Tirp_FD_Mission"") != _currentTargets)";
+			};
+		};
+	};
+	class Item11
+	{
+		Flags=210;
+		BasicText="";
+		Left=-4.0082474;
+		Top=-198.93896;
+		Right=3.9917679;
+		Bottom=-190.93896;
+		BgColor=0;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=7;
+			class ItemInfo
+			{
+				Id=24;
+			};
+		};
+	};
+	class Item12
+	{
+		Flags=210;
+		BasicText="";
+		Left=82.569031;
+		Top=-261.41739;
+		Right=90.569031;
+		Bottom=-253.41739;
+		BgColor=0;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=7;
+			class ItemInfo
+			{
+				Id=25;
+			};
+		};
+	};
+};
+class GraphLinks
+{
+	class Link0
+	{
+		From=0;
+		To=0;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link1
+	{
+		From=0;
+		To=11;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link2
+	{
+		From=1;
+		To=12;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link3
+	{
+		From=2;
+		To=2;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link4
+	{
+		From=2;
+		To=3;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link5
+	{
+		From=2;
+		To=7;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link6
+	{
+		From=3;
+		To=4;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link7
+	{
+		From=4;
+		To=5;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link8
+	{
+		From=5;
+		To=6;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link9
+	{
+		From=6;
+		To=5;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link10
+	{
+		From=6;
+		To=10;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link11
+	{
+		From=7;
+		To=8;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link12
+	{
+		From=8;
+		To=9;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link13
+	{
+		From=9;
+		To=0;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link14
+	{
+		From=10;
+		To=2;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link15
+	{
+		From=11;
+		To=1;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link16
+	{
+		From=12;
+		To=2;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+};
+class Globals
+{
+	NextGroupID=1;
+	NextID=26;
+	FSMName="fsm_tirp_FD";
+	class DefaultLink
+	{
+		ArrowSize=0;
+	};
+	DefaultLinkColor=6316128;
+	DefaultLinkColorFromSelected=6316287;
+	DefaultLinkColorToSelected=6356832;
+	DefaultLinkUseCustom=1;
+	PZoomLeft=-975.32605;
+	PZoomRight=1239.5176;
+	PZoomBottom=535.27777;
+	PZoomTop=-1056.5284;
+	Clxs=1230;
+	Clys=884;
+	Aspect=1;
+};
+class Window
+{
+	Flags=2;
+	MaxPosX=-1;
+	MaxPosY=-1;
+	MinPosX=-1;
+	MinPosY=-1;
+	Left=104;
+	Top=104;
+	Right=1544;
+	Bottom=863;
+	ShowCmd=3;
+	SplitPos=1248;
+};

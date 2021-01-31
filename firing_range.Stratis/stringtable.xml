@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="Tirp mission framework">
+	<Package name="Firing Range">
+		<Key ID="STR_FR_range">
+			<Original>Range</Original>
+			<English>Range</English>
+			<German>Entfernung</German>
+		</Key>
+		<Key ID="STR_FR_countIn">
+			<Original>Your firing drill starts in: %1 get into position soldier!</Original>
+			<English>Your firing drill starts in: %1 get into position soldier!</English>
+			<German>"Ihre Feuerübung beginnt in: %1 in Position Soldat!</German>
+		</Key>
+		<Key ID="STR_FR_range">
+			<Original>Range</Original>
+			<English>Range</English>
+			<German>Entfernung</German>
+		</Key>
+		
+	</Package>
+	<Package name="Firing Range setup dialog">
+		<Key ID="STR_FR_setup_defaultOverride">
+			<Original>You cannot overwrite the default setup!</Original>
+			<English>You cannot overwrite the default setup!</English>
+			<German>Sie Dü die standart übung nicht überschreiben!</German>
+		</Key>
+		STR_FR_setup_defaultDel
+		<Key ID="STR_FR_setup_defaultDel">
+			<Original>You cannot delete the default setup!</Original>
+			<English>You cannot delete the default setup!</English>
+			<German>Sie Dü die standart übung nicht löschen!</German>
+		</Key>
+	</Package>
+</Project>

@@ -1,0 +1,35 @@
+/* 
+
+Tirp Resupply Instructions and init overrides
+
+=========================
+Player:
+=========================
+Access the menu through the diary under Resupply >> player. Players can request a resupply and check whether resupply is enabled.
+
+=========================
+Misdev:
+=========================
+
+To set a central resupply location place a marker "TIRP_resupply" on the map.
+To set individual locations place markers in the format "TIRP_resupply_<groupname>" for example  "TIRP_resupply_Alpha 1-2" not the space in the group name is valid as marker names do not have to conform to variable name conventions. If the group specific marker cannot be found it will fallback to the central marker.
+If these markers are missing the box will spawn at the requesting players location.
+Order of priority: Group specific marker >> Central marker >> player location.
+
+To open the admin panel the player must have access to a zeus module and click on the "open admin option" link in the diary.
+The admin panel is found under Resupply >> Curator.
+
+*/
+
+//change the ammo crate class: replace "Box_NATO_Ammo_F" with class of your choice
+missionNamespace setVariable ["TIRP_resupply_crate_class","Box_NATO_Ammo_F", True]; 
+
+//enable resupply by default:
+missionNamespace setVariable ["TIRP_resupply_enabled",True, True];
+
+//enable modification by default:
+missionNamespace setVariable ["TIRP_resupply_mod_enabled",True, True];
+
+//change the number of resupplies per group to 4:
+missionNamespace setVariable ["TIRP_resupply_max_supplies", 4, True];
+

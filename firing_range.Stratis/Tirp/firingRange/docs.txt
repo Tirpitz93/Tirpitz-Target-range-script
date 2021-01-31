@@ -1,0 +1,207 @@
+
+
+	//done: tgt popup up script.
+	//done: shot counter 
+	//done: hit ratio
+	//done: score per minute
+	//Done: active target array  and command target for both ai and non, to show in hud.
+	//done: ensure all EH are tracked (ctrltgts)
+	//done: debug pens in target on crater position
+	//done: base for each lane which emits sound, 
+	//done: sound for events, such as target pop ups and hits/ misses/ success /fail/ friendly fire etc.
+	//done: auto acquire targets, moving and swinging, using naming convention
+	//done: finish target configs, hit boxescould do with fine tuning for each target variation
+	//done: custom target sequence
+	//done: round accuracy score
+	//done: end mission after last target
+	//done: targets can pop up after last target went down
+	//done: add AI functionality
+	
+	//todo refactor all spawns into functions fn_parentName_subName.sqf
+	//todo: Refactor to non oop to make debug easier
+	//todo: get moving target script to work, poss. using dynamically spawned target that is local on each maching and hide on all other machines
+	//todo: mission type configs, eg pistol range under 50m, SEQUENTIAL pop ups, random pop ups, not behind. and variations for each level.
+	//todo: impliment Stance, and firemode checks
+	//todo: test weapons, stance and firmode checks
+	//todo: impliment pop by proximity // Public functions: popNext, popNearest
+	//todo: complete deconstructor
+	//todo: error handling, no targets found etc
+	//done: check kit on fire evh, and fail mission, if set to hc mode
+	//todo: briefing dialog, with rules after setup dialog
+	//todo: seperate start mission and constructor.
+	//todo: report to rangemaster. for brief and score.
+	//todo: error check premade order array for missing targets
+	//todo: lane booking interface
+	//todo: enfore namespacing (tirp_FD) for global variables
+	//todo: add actions to lane base.
+	//todo: cadet mode with each target marked in hud, and no failure.
+	//todo: add is ambient to prevent buildup of redundant data such as score and records
+	//todo: AI stand down at end of mission
+	//todo: hints only for player units
+	//todo: AI to select correct gear that is allowed in mission.
+	//todo: AI spotters to call targets
+	//todo: rebuild this file to work with new array and rules setup. 
+	//todo: configure pop up sequences.
+	//todo: pop up sequences, sequential, fixed interval, random, multiple parallel,
+	//todo: add pop up sequence sliders to setup dialog.
+	//todo: mission config array location. limit to mission only or allow personal ones
+	//todo: add sharing  of profiles (like virtual ammobox)
+	//todo: seperate config and mission start.
+	//todo: ammo box setup with legit kit.
+	//postponed: impliment config by array.
+	//postponed: use fsm to control ai shooting behaviour.now using better standalone loop to acquire targets.
+	
+	
+	
+	
+//*Loadouts:
+
+/*	*British shooter mxm:
+		comment "Exported from Arsenal by Lonja Selter";    comment "Remove existing items";  removeAllWeapons this;  removeAllItems this;  removeAllAssignedItems this;  removeUniform this;  removeVest this;  removeBackpack this;  removeHeadgear this;  removeGoggles this;    comment "Add containers";  this forceAddUniform "U_B_CTRG_2";  for "_i" from 1 to 4 do {this addItemToUniform "30Rnd_65x39_caseless_mag";};  this addVest "V_TacVest_khk";  for "_i" from 1 to 4 do {this addItemToVest "30Rnd_65x39_caseless_mag";};  this addHeadgear "H_Cap_khaki_specops_UK";  this addGoggles "G_Sport_Red";    comment "Add weapons";  this addWeapon "arifle_MX_F";  this addPrimaryWeaponItem "acc_pointer_IR";  this addPrimaryWeaponItem "optic_Arco";  this addPrimaryWeaponItem "bipod_01_F_snd";  this addWeapon "hgun_Rook40_snds_F";  this addHandgunItem "muzzle_snds_L";  this addWeapon "Binocular";    comment "Add items";  this linkItem "ItemMap";  this linkItem "ItemCompass";  this linkItem "ItemWatch";  this linkItem "ItemRadio";  this linkItem "ItemGPS";    comment "Set identity";  this setFace "WhiteHead_16";  this setSpeaker "Male02ENGB";  this  disableAI  "MOVE"; this setUnitPos "Middle" ;
+	
+	*/
+/*	*British spotter Marshal:
+		comment "Exported from Arsenal by Lonja Selter";
+
+		comment "Remove existing items";
+		removeAllWeapons this;
+		removeAllItems this;
+		removeAllAssignedItems this;
+		removeUniform this;
+		removeVest this;
+		removeBackpack this;
+		removeHeadgear this;
+		removeGoggles this;
+
+		comment "Add containers";
+		this forceAddUniform "U_Marshal";
+		this addVest "V_TacVest_blk";
+		this addHeadgear "H_Cap_khaki_specops_UK";
+		this addGoggles "G_Sport_BlackWhite";
+
+		comment "Add weapons";
+		this addWeapon "Rangefinder";
+
+		comment "Add items";
+		this linkItem "ItemMap";
+		this linkItem "ItemCompass";
+		this linkItem "ItemWatch";
+		this linkItem "ItemRadio";
+		this linkItem "ItemGPS";
+
+		comment "Set identity";
+		this setFace "WhiteHead_16";
+		this setSpeaker "Male04ENGB";
+		[this,"MANW"] call bis_fnc_setUnitInsignia;
+		 this  disableAI  "MOVE"; this setUnitPos "Middle" ;
+		 this selectWeapon "Rangefinder";
+		 */	 
+/*	*Greek shooter MK1:
+		comment "Exported from Arsenal by Lonja Selter";
+
+		comment "Remove existing items";
+		removeAllWeapons this;
+		removeAllItems this;
+		removeAllAssignedItems this;
+		removeUniform this;
+		removeVest this;
+		removeBackpack this;
+		removeHeadgear this;
+		removeGoggles this;
+
+		comment "Add containers";
+		this forceAddUniform "U_Competitor";
+		for "_i" from 1 to 2 do {this addItemToUniform "20Rnd_762x51_Mag";};
+		this addVest "V_TacVest_blk";
+		for "_i" from 1 to 8 do {this addItemToVest "20Rnd_762x51_Mag";};
+		this addHeadgear "H_Bandanna_sgg";
+		this addGoggles "G_Sport_Blackred";
+
+		comment "Add weapons";
+		this addWeapon "srifle_DMR_03_F";
+		this addPrimaryWeaponItem "optic_LRPS";
+
+		comment "Add items";
+		this linkItem "ItemCompass";
+		this linkItem "ItemWatch";
+		this linkItem "ItemRadio";
+		this linkItem "ItemGPS";
+
+		comment "Set identity";
+		this setFace "GreekHead_A3_04";
+		this setSpeaker "Male02GRE";
+		[this,"GryffinRegiment"] call bis_fnc_setUnitInsignia;
+		this  disableAI  "MOVE"; this setUnitPos "Middle" ;
+		*/	
+/*	*american shooter MAR10:
+		comment "Exported from Arsenal by Lonja Selter";
+		comment "Remove existing items";
+		removeAllWeapons this;
+		removeAllItems this;
+		removeAllAssignedItems this;
+		removeUniform this;
+		removeVest this;
+		removeBackpack this;
+		removeHeadgear this;
+		removeGoggles this;
+
+		comment "Add containers";
+		this forceAddUniform "U_Competitor";
+		this addItemToUniform "10Rnd_338_Mag";
+		this addVest "V_TacVest_blk";
+		for "_i" from 1 to 2 do {this addItemToVest "10Rnd_338_Mag";};
+		this addHeadgear "H_Bandanna_sgg";
+		this addGoggles "G_Sport_Blackred";
+
+		comment "Add weapons";
+		this addWeapon "srifle_DMR_02_F";
+		this addPrimaryWeaponItem "optic_KHS_blk";
+
+		comment "Add items";
+		this linkItem "ItemCompass";
+		this linkItem "ItemWatch";
+		this linkItem "ItemRadio";
+		this linkItem "ItemGPS";
+
+		comment "Set identity";
+		this setFace "WhiteHead_11";
+		this setSpeaker "Male08ENG";
+		[this,"GryffinRegiment"] call bis_fnc_setUnitInsignia;
+		this  disableAI  "MOVE"; this setUnitPos "Middle" ;
+*/
+/*	* marshal 2:
+	comment "Exported from Arsenal by Lonja Selter";
+
+	comment "Remove existing items";
+	removeAllWeapons this;
+	removeAllItems this;
+	removeAllAssignedItems this;
+	removeUniform this;
+	removeVest this;
+	removeBackpack this;
+	removeHeadgear this;
+	removeGoggles this;
+
+	comment "Add containers";
+	this forceAddUniform "U_Marshal";
+	this addVest "V_TacVest_blk";
+	this addHeadgear "H_Cap_khaki_specops_UK";
+	this addGoggles "G_Sport_BlackWhite";
+
+	comment "Add weapons";
+	this addWeapon "Rangefinder";
+
+	comment "Add items";
+	this linkItem "ItemMap";
+	this linkItem "ItemCompass";
+	this linkItem "ItemWatch";
+	this linkItem "ItemRadio";
+	this linkItem "B_UavTerminal";
+
+	comment "Set identity";
+	this setFace "WhiteHead_16";
+	this setSpeaker "Male04ENGB";
+	[this,"MANW"] call bis_fnc_setUnitInsignia;
+
+
+*/

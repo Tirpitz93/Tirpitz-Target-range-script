@@ -1,0 +1,12 @@
+#define	ACCEPT	10008
+#define	BACK	10001
+#define	IDCDIALOG	10000
+#define	FRAME	10002
+#define	HITMARKER	10011
+#define	RETRY	10009
+#define	STATS	10007
+#define	TARGET	10010
+#define	TGTICON	10005
+#define	TGTINFO	10006
+#define	TGTLIST	10004
+#define	TITLE	10003

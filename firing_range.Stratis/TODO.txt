@@ -1,0 +1,53 @@
+	//done: tgt popup up script.
+	//done: shot counter 
+	//done: hit ratio
+	//done: score per minute
+	//Done: active target array  and command target for both ai and non, to show in hud.
+	//done: ensure all EH are tracked (ctrltgts)
+	//done: debug pens in target on crater position
+	//done: base for each lane which emits sound, 
+	//done: sound for events, such as target pop ups and hits/ misses/ success /fail/ friendly fire etc.
+	//done: auto acquire targets, moving and swinging, using naming convention
+	//done: finish target configs, hit boxescould do with fine tuning for each target variation
+	//done: custom target sequence
+	//done: round accuracy score
+	//done: end mission after last target
+	//done: targets can pop up after last target went down
+	//done: add AI functionality
+	
+	//TODO: impliment callback function
+	//todo: get moving target script to work, poss. using dynamically spawned target that is local on each maching and hide on all other machines
+	//todo: mission type configs, eg pistol range under 50m, SEQUENTIAL pop ups, random pop ups, not behind. and variations for each level.
+	//todo: impliment Stance, and firemode checks
+	//todo: test weapons, stance and firmode checks
+	//todo: impliment pop by proximity // Public functions: popNext, popNearest
+	//todo: complete deconstructor
+	//todo: error handling, no targets found etc
+	//todo: check kit on fire evh, and fail mission, if set to hc mode
+	//todo: briefing dialog, with rules after setup dialog
+	//todo: seperate start mission and constructor.
+	//todo: report to rangemaster. for brief and score.
+	//todo: error check premade order array for missing targets
+	//todo: lane booking interface
+	//todo: enfore namespacing (tirp_FD) for global variables
+	//todo: add actions to lane base.
+	//todo: cadet mode with each target marked in hud, and no failure.
+	//todo: add is ambient to prevent buildup of redundant data such as score and records
+	//todo: AI stand down at end of mission
+	//todo: hints only for player units
+	//todo: AI to select correct gear that is allowed in mission.
+	//todo: AI spotters to call targets
+	//todo: rebuild this file to work with new array and rules setup. 
+	//todo: configure pop up sequences.
+	//todo: pop up sequences, sequential, fixed interval, random, multiple parallel,
+	//todo: add pop up sequence sliders to setup dialog.
+	//todo: mission config array location. limit to mission only or allow personal ones
+	//todo: add sharing  of profiles (like virtual ammobox)
+	//todo: seperate config and mission start.
+	//todo: ammo box setup with legit kit.
+	
+	
+	
+	//postponed: impliment config by array.
+	//postponed: use fsm to control ai shooting behaviour.now using better standalone loop to acquire targets.
+	

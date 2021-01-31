@@ -1,0 +1,41 @@
+
+#include "Tirp\dialogs.h"
+
+OnLoadName = "Firing Range";
+Author = "Loenja 'Tirpitz'";
+OnLoadMission = "Firearms training mission";
+loadScreen = "images\loading.jpg";
+overviewPicture = "images\loading.jpg";
+
+overviewText = "Firearms training mission";
+disabledAI = 1;
+enableDebugConsole = 1;
+allowFunctionsLog = 1;
+Respawn = 3;
+RespawnDelay = 20;
+allowFunctionsRecompile = 1;
+class Header
+{
+	gameType=COOP;
+	minPlayers=1;
+	maxPlayers=24;
+};
+
+
+
+class CfgFunctions
+{
+	#include "Tirp\functions.h"
+};
+
+class CfgSounds
+{
+
+	sounds[] = {};
+	#include "Tirp\sounds.h"
+};
+
+
+class Params { 
+		
+};
